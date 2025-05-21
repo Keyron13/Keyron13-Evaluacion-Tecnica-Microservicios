@@ -1,0 +1,132 @@
+/* Fondo oscuro semitransparente */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1050;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+/* Contenedor principal */
+.transactions-modal-container {
+  background: white;
+  border-radius: 10px;
+  width: 95%;
+  max-width: 1600px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+
+/* Encabezado */
+.transactions-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background: #88c1fa;
+  border-bottom: 1px solid #dee2e6;
+  position: relative;
+}
+
+/* Botón cerrar */
+.modal-close-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #f8f9fa;
+  border: 1px solid #ff0000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  
+  &:hover {
+    background: #ff0000;
+    transform: rotate(90deg);
+  }
+}
+
+/* Contenido */
+.transactions-modal-content {
+  padding: 20px;
+  overflow-y: auto;
+}
+
+/* Tabla responsive */
+.table-responsive {
+  overflow-x: auto;
+  max-height: 50vh;
+}
+
+/* Mensajes */
+.no-transactions {
+  text-align: center;
+  padding: 40px;
+  color: #6c757d;
+}
+
+/* Ajustes para la tabla */
+.table {
+  width: 100%;
+  margin-bottom: 1rem;
+  
+  th {
+    background: #f8f9fa;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    vertical-align: middle;
+  }
+  
+  td {
+    vertical-align: middle;
+  }
+}
+
+/* Responsive para pantallas pequeñas */
+@media (max-width: 992px) {
+  .transactions-modal-container {
+    width: 98%;
+  }
+  
+  .transactions-modal-content {
+    padding: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  .modal-close-btn {
+    width: 35px;
+    height: 35px;
+    position: absolute;
+    right: 15px;
+    top: 15px;
+  }
+  
+  .transactions-modal-header {
+    flex-direction: column;
+    padding-bottom: 40px;
+    
+    h2 {
+      margin-bottom: 15px;
+    }
+  }
+  
+  .table {
+    font-size: 0.85rem;
+    
+    td, th {
+      padding: 8px 10px;
+    }
+  }
+}

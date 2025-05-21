@@ -1,0 +1,127 @@
+<div class="modal-overlay">
+  <div class="transactions-modal-container">
+    <!-- Encabezado con botón de cerrar -->
+    <div class="transactions-modal-header">
+      <h2>Lista de Transacciones</h2>
+      <button class="modal-close-btn" (click)="navigateToHome()">
+        <i class="bi bi-x"></i>
+      </button>
+    </div>
+
+    <!-- Contenido -->
+    <div class="transactions-modal-content">
+      <!-- Botón Crear -->
+      <button
+        class="btn btn-primary mb-3 d-block mx-auto"
+        (click)="router.navigate(['/transactions/create'])"
+      >
+        Crear Transacción
+      </button>
+
+      <!-- Filtros -->
+      <div class="row g-3 mb-3">
+        <div class="col-md-6">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Buscar por nombre de producto..."
+            [(ngModel)]="searchText"
+            (ngModelChange)="goToPage(1)"
+          />
+        </div>
+        <div class="col-md-6">
+          <select
+            class="form-select"
+            [(ngModel)]="selectedType"
+            (change)="goToPage(1)"
+          >
+            <option value="">Todos los tipos</option>
+            <option value="venta">Venta</option>
+            <option value="compra">Compra</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Tabla -->
+      <div class="table-responsive">
+        <table
+          class="table table-striped"
+          *ngIf="!loading && transactions.length > 0; else noData"
+        >
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Fecha</th>
+              <th>Tipo</th>
+              <th>Producto</th>
+              <th>Cantidad</th>
+              <th>Precio Unitario</th>
+              <th>Precio Total</th>
+              <th>Detalle</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let t of paginatedTransactions()">
+              <td>{{ t.id }}</td>
+              <td>{{ t.date | date : "short" }}</td>
+              <td>{{ t.transactionType }}</td>
+              <td>{{ getProductName(t.productId) }}</td>
+              <td>{{ t.quantity }}</td>
+              <td>{{ t.unitPrice | currency : "USD" }}</td>
+              <td>{{ t.totalPrice | currency : "USD" }}</td>
+              <td>{{ t.detail }}</td>
+              <td>
+                <button
+                  class="btn btn-sm btn-warning me-2"
+                  (click)="editTransaction(t.id!)"
+                >
+                  Editar
+                </button>
+                <button
+                  class="btn btn-sm btn-danger"
+                  (click)="deleteTransaction(t.id!)"
+                >
+                  Eliminar
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Loading y empty states -->
+      <ng-template #noData>
+        <div class="no-transactions">
+          <p *ngIf="!loading">No hay transacciones para mostrar.</p>
+          <p *ngIf="loading">Cargando transacciones...</p>
+        </div>
+      </ng-template>
+
+      <!-- Paginación -->
+      <nav *ngIf="totalPages() > 1" class="mt-3">
+        <ul class="pagination justify-content-center">
+          <li class="page-item" [class.disabled]="currentPage === 1">
+            <button class="page-link" (click)="goToPage(currentPage - 1)">
+              Anterior
+            </button>
+          </li>
+          <li
+            class="page-item"
+            *ngFor="let page of [].constructor(totalPages()); let i = index"
+            [class.active]="currentPage === i + 1"
+          >
+            <button class="page-link" (click)="goToPage(i + 1)">
+              {{ i + 1 }}
+            </button>
+          </li>
+          <li class="page-item" [class.disabled]="currentPage === totalPages()">
+            <button class="page-link" (click)="goToPage(currentPage + 1)">
+              Siguiente
+            </button>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>

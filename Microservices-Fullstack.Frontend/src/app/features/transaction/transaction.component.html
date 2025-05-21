@@ -1,0 +1,175 @@
+<div class="modal-overlay">
+  <div class="modal-container">
+    <div class="card shadow">
+      <div class="card-header bg-primary text-white">
+        <h4 class="mb-0">
+          {{ isEditMode ? "Editar Transacción" : "Crear Transacción" }}
+        </h4>
+      </div>
+
+      <div class="card-body">
+        <form [formGroup]="transactionForm" (ngSubmit)="onSubmit()" novalidate>
+          <!-- Tipo de Transacción -->
+          <div class="mb-3">
+            <label for="transactionType" class="form-label">Tipo de Transacción *</label>
+            <select
+              id="transactionType"
+              class="form-select"
+              formControlName="transactionType"
+              [class.is-invalid]="
+                transactionForm.get('transactionType')?.invalid &&
+                transactionForm.get('transactionType')?.touched
+              "
+            >
+              <option value="">Seleccione</option>
+              <option value="compra">Compra</option>
+              <option value="venta">Venta</option>
+            </select>
+            <div
+              class="invalid-feedback"
+              *ngIf="transactionForm.get('transactionType')?.errors?.['required']"
+            >
+              El tipo es obligatorio
+            </div>
+          </div>
+
+          <!-- Producto -->
+          <div class="mb-3">
+            <label for="productId" class="form-label">Producto</label>
+            <select
+              id="productId"
+              class="form-select"
+              formControlName="productId"
+              [class.is-invalid]="
+                transactionForm.get('productId')?.invalid &&
+                transactionForm.get('productId')?.touched
+              "
+            >
+              <option value="">Seleccione un producto</option>
+              <option *ngFor="let product of products" [value]="product.id">
+                {{ product.name }}
+              </option>
+            </select>
+            <div
+              class="invalid-feedback"
+              *ngIf="
+                transactionForm.get('productId')?.invalid &&
+                transactionForm.get('productId')?.touched
+              "
+            >
+              El producto es obligatorio
+            </div>
+          </div>
+
+          <!-- Cantidad -->
+          <div class="mb-3">
+            <label for="quantity" class="form-label">Cantidad *</label>
+            <input
+              type="number"
+              id="quantity"
+              class="form-control"
+              formControlName="quantity"
+              min="1"
+              [class.is-invalid]="
+                transactionForm.get('quantity')?.invalid &&
+                transactionForm.get('quantity')?.touched
+              "
+            />
+            <div
+              class="invalid-feedback"
+              *ngIf="transactionForm.get('quantity')?.errors?.['required']"
+            >
+              La cantidad es obligatoria
+            </div>
+            <div
+              class="invalid-feedback"
+              *ngIf="transactionForm.get('quantity')?.errors?.['min']"
+            >
+              Mínimo 1 unidad
+            </div>
+          </div>
+
+          <!-- Precio Unitario -->
+          <div class="mb-3">
+            <label for="unitPrice" class="form-label">Precio Unitario *</label>
+            <input
+              type="number"
+              id="unitPrice"
+              class="form-control"
+              formControlName="unitPrice"
+              step="0.01"
+              min="0.01"
+              readonly
+              [class.is-invalid]="
+                transactionForm.get('unitPrice')?.invalid &&
+                transactionForm.get('unitPrice')?.touched
+              "
+            />
+            <div
+              class="invalid-feedback"
+              *ngIf="transactionForm.get('unitPrice')?.errors?.['required']"
+            >
+              El precio es obligatorio
+            </div>
+            <div
+              class="invalid-feedback"
+              *ngIf="transactionForm.get('unitPrice')?.errors?.['min']"
+            >
+              Debe ser mayor a 0
+            </div>
+          </div>
+
+          <!-- Detalle -->
+          <div class="mb-3">
+            <label for="detail" class="form-label">Detalle</label>
+            <textarea
+              id="detail"
+              class="form-control"
+              formControlName="detail"
+              rows="2"
+            ></textarea>
+          </div>
+
+          <!-- Fecha -->
+          <div class="mb-3">
+            <label for="date" class="form-label">Fecha *</label>
+            <input
+              type="date"
+              id="date"
+              class="form-control"
+              formControlName="date"
+              [class.is-invalid]="
+                transactionForm.get('date')?.invalid &&
+                transactionForm.get('date')?.touched
+              "
+            />
+            <div
+              class="invalid-feedback"
+              *ngIf="transactionForm.get('date')?.errors?.['required']"
+            >
+              La fecha es obligatoria
+            </div>
+          </div>
+
+          <!-- Botones -->
+          <div class="d-flex justify-content-end gap-2">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              (click)="router.navigate(['/transactions'])"
+            >
+              Cancelar
+            </button>
+            <button
+              type="submit"
+              class="btn btn-success"
+              [disabled]="transactionForm.invalid"
+            >
+              {{ isEditMode ? "Actualizar" : "Crear" }}
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

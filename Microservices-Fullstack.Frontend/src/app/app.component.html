@@ -1,0 +1,47 @@
+<div class="inventory-dashboard">
+  <!-- Header Section -->
+  <header class="dashboard-header">
+    <div class="container">
+      <div class="header-content">
+        <h1 class="dashboard-title">
+          <span class="title-highlight">Sistema de</span> Inventario
+        </h1>
+        <p class="dashboard-subtitle">Control inteligente de stock y movimientos</p>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="dashboard-main">
+    <div class="container">
+      <div class="action-cards">
+        <!-- Productos Card -->
+        <div class="action-card product-card" (click)="goToProducts()">
+          <div class="card-icon">
+            <img src="https://cdn-icons-png.flaticon.com/512/3132/3132693.png" alt="Productos" class="card-image">
+          </div>
+          <h2>Gestión de<br>Productos</h2>
+          <p>Administra el catálogo de productos, stock y categorías</p>
+          <button class="btn action-btn">Acceder</button>
+        </div>
+
+        <!-- Transacciones Card -->
+        <div class="action-card transaction-card" (click)="goToTransactions()">
+          <div class="card-icon">
+            <img src="https://cdn-icons-png.flaticon.com/512/3144/3144456.png" alt="Transacciones" class="card-image">
+          </div>
+          <h2>Gestión de Transacciones</h2>
+          <p>Registra y monitorea movimientos de inventario</p>
+          <button class="btn action-btn">Acceder</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="dashboard-footer">
+    <p>Sistema de Inventario © 2025 - Keyron Aguilar</p>
+  </footer>
+</div>
+
+<router-outlet></router-outlet>

@@ -1,0 +1,75 @@
+/* Fondo oscuro semitransparente */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1050;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+/* Contenedor principal */
+.product-modal-container {
+  background: white;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 1600px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+
+/* Encabezado */
+.product-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background: #88c1fa;
+  border-bottom: 1px solid #dee2e6;
+  position: relative;
+}
+
+/* Botón cerrar */
+.modal-close-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #f8f9fa;
+  border: 1px solid #e31818;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  
+  &:hover {
+    background: #fd0000;
+    transform: rotate(90deg);
+  }
+}
+
+/* Contenido */
+.product-modal-content {
+  padding: 20px;
+  overflow-y: auto;
+}
+
+/* Tabla responsive */
+.table-responsive {
+  overflow-x: auto;
+  max-height: 50vh;
+}
+
+/* Mensajes */
+.no-product {
+  text-align: center;
+  padding: 40px;
+}
