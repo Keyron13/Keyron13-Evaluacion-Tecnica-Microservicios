@@ -165,3 +165,4 @@ C:\Users\aguil\OneDrive\Desktop\Evaluación Tecnica-Microservicios\Microservices
 C:\Users\aguil\OneDrive\Desktop\Evaluación Tecnica-Microservicios\Microservices-Fullstack .NET\TransactionService\obj\Debug\net8.0\TransactionService.pdb
 C:\Users\aguil\OneDrive\Desktop\Evaluación Tecnica-Microservicios\Microservices-Fullstack .NET\TransactionService\obj\Debug\net8.0\TransactionService.genruntimeconfig.cache
 C:\Users\aguil\OneDrive\Desktop\Evaluación Tecnica-Microservicios\Microservices-Fullstack .NET\TransactionService\obj\Debug\net8.0\ref\TransactionService.dll
+C:\Users\aguil\OneDrive\Desktop\Evaluación Tecnica-Microservicios\Microservices-Fullstack .NET\TransactionService\obj\Debug\net8.0\TransactionService.sourcelink.json

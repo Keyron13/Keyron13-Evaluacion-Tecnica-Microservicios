@@ -165,3 +165,4 @@ C:\Users\aguil\OneDrive\Desktop\Evaluación Tecnica-Microservicios\Microservices
 C:\Users\aguil\OneDrive\Desktop\Evaluación Tecnica-Microservicios\Microservices-Fullstack .NET\ProductService\obj\Debug\net8.0\ProductService.pdb
 C:\Users\aguil\OneDrive\Desktop\Evaluación Tecnica-Microservicios\Microservices-Fullstack .NET\ProductService\obj\Debug\net8.0\ProductService.genruntimeconfig.cache
 C:\Users\aguil\OneDrive\Desktop\Evaluación Tecnica-Microservicios\Microservices-Fullstack .NET\ProductService\obj\Debug\net8.0\ref\ProductService.dll
+C:\Users\aguil\OneDrive\Desktop\Evaluación Tecnica-Microservicios\Microservices-Fullstack .NET\ProductService\obj\Debug\net8.0\ProductService.sourcelink.json
